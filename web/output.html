@@ -1,0 +1,602 @@
+<!DOCTYPE HTML>
+<!--
+        Traveler by freehtml5.co
+        Twitter: http://twitter.com/fh5co
+        URL: http://freehtml5.co
+-->
+<html>
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>iTravel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+        <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+        <meta name="author" content="FreeHTML5.co" />
+
+        <!-- Facebook and Twitter integration -->
+        <meta property="og:title" content=""/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content=""/>
+        <meta property="og:site_name" content=""/>
+        <meta property="og:description" content=""/>
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:image" content="" />
+        <meta name="twitter:url" content="" />
+        <meta name="twitter:card" content="" />
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="css/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="css/icomoon.css">
+        <!-- Themify Icons-->
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
+
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+
+        <!-- Owl Carousel  -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Modernizr JS -->
+        <script src="js/modernizr-2.6.2.min.js"></script>
+      
+        
+        <!-- FOR IE9 below -->
+        <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="https://kit.fontawesome.com/8192f4bee7.js" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoA8lRIZnbpId8e8pYcMyfvcDmKIn-3e4&libraries=places"></script>
+
+        </head>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>智遊旅伴</title>
+                <link rel="stylesheet" href="css/styles2.css">
+
+                
+        </head>
+        <div class="gtco-loader"></div>
+        <div id="page">
+          <nav class="gtco-nav" role="navigation">
+            <div class="gtco-container">
+              <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                  <div id="gtco-logo_1">
+                    <a href="index.html">
+                      <img src="images/logo_w.png" alt="logo" style="width: 11.5%; height: auto;">
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-8 text-right menu-1">
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="book1.html">Plan Now</a></li>
+                    <li><a href="destination.html">Destination</a></li>
+                    <li><a href="carbon.html">Carbon</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+        <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(taiwan1.jpg); height: 300px; background-size: cover; background-attachment: fixed;">
+                <div class="overlay"></div>
+                <div class="gtco-container">
+                        <div class="row">
+                                <div class="col-md-12 col-md-offset-0 text-center">
+                                        <div class="row row-mt-15em" style="margin-top: 100px;"></div>
+
+						<h1>智遊旅伴</h1>
+                                                <h2 id="county"></h2>
+
+
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+        </header>
+        <body>
+          <div class="loading-message" id="loading-message">
+            <img src="images/loader.gif" alt="Loading">
+            <p>正在為您準備專屬行程......</p>
+          </div>
+            <div class="gtco-section border-bottom"></div>
+                <div class="gtco-container">
+                        <div>
+                                <ul id="day-list" >
+                                  <!-- Day buttons will be dynamically added here -->
+                                </ul>
+                          </div>
+
+                                <!-- 新增顯示當天所有行程的區塊 -->
+                                <div id="daily-schedule" style="display: none;"  class="schedule-container">
+                                  <h3 id="daily-schedule-title" class="schedule-title"></h3>
+                                  <p id="daily-schedule-content" class="schedule-content"></p>
+                                </div>
+                              
+                              
+                        </div>
+                        <div class="sticky-buttons-container">
+                          <button id="morning-btn" class="time-btn" style="display: none;">上午行程</button>
+                          <button id="afternoon-btn" class="time-btn" style="display: none;">下午行程</button>
+                          <button id="evening-btn" class="time-btn" style="display: none;">晚上行程</button>
+                        </div>
+                      
+                          <div id="response-container" style="display: none;"></div>
+                          
+                          </div>
+                          
+                </div>
+        </div>
+        <div id="map" style="height: 400px;"></div>
+        <div class="gtco-section">
+                <div class="gtco-container">
+                      <button id="download-iTravel-button" class="btn btn-primary">下載行程</button>
+                        <script>
+                                function getDataFromAPI() {
+                                        const county = sessionStorage.getItem('county');
+                                        const dates = sessionStorage.getItem('dates');
+                                        const departureDate = sessionStorage.getItem('departure_date');
+                                        const returnDate = sessionStorage.getItem('return_date');
+
+                                        const foodLevel = sessionStorage.getItem('food_level');
+                                        const hotelLevel = sessionStorage.getItem('hotel_level');
+                                        const viewLevel = sessionStorage.getItem('viewpoint_level');
+
+                                        const hotelLikeTag = JSON.parse(sessionStorage.getItem('hotel_like_tag'));
+                                        const hotelPriceTag = sessionStorage.getItem('hotel_price_tag');
+                                        const hotelOtherTag=JSON.parse(sessionStorage.getItem('hotel_other_tag'));
+
+                                        const foodTasteTag = JSON.parse(sessionStorage.getItem('food_taste_tag'));
+                                        const foodPriceTag= sessionStorage.getItem('food_price_tag');
+                                        const foodOtherTag = JSON.parse(sessionStorage.getItem('food_other_tag'));
+
+                                        const viewpointOtherTag = JSON.parse(sessionStorage.getItem('viewpoint_other_tag'));
+                                        const transportation = sessionStorage.getItem('transportation');
+
+                                  // 檢查必填項目是否存在
+                                  if (!county || !dates) {
+                                        alert('請先填寫必填項目!');
+                                        return;
+                                  }
+
+                                  const data = {
+                                        county: county,
+                                        dates: parseInt(dates),
+                                        departure_date: departureDate,
+                                        return_date: returnDate,
+
+                                        food_level:parseInt(foodLevel),
+                                        hotel_level: parseInt(hotelLevel),
+                                        viewpoint_level:parseInt(viewLevel) ,
+
+                                        hotel_like_tag:hotelLikeTag ,
+                                        hotel_price_tag:parseInt(hotelPriceTag) ,
+                                        hotel_other_tag:hotelOtherTag ,
+
+                                        food_taste_tag:foodTasteTag  ,
+                                        food_price_tag :parseInt(foodPriceTag) ,
+                                        food_other_tag :foodOtherTag,
+
+                                        viewpoint_other_tag:viewpointOtherTag , 
+                                        transportation:parseInt(transportation) ,
+                                  };
+
+                                  // 發送 API POST 請求
+                                  fetch('http://127.0.0.1:5000/Travel', {
+                                        method: 'POST',
+                                        headers: {
+                                          'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(data)
+                                      })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                          // 在 form3.html 中顯示 API 回應的資料
+                                          const responseContainer = document.getElementById('response-container');
+                                          responseContainer.innerHTML = JSON.stringify(data, null, 2);
+
+                                          const dayList = document.getElementById('day-list');
+                                          dayList.innerHTML = '';
+
+                                          // 顯示縣市名稱
+                                          const countyHeading = document.getElementById('county');
+                                          countyHeading.innerText = county;
+
+                                          // 顯示每一天的資訊
+                                          data.message.forEach((dayData, index) => {
+                                            const dayNum = index + 1;
+                                            const date = dayData[`day${dayNum}`][0];
+                                            const dayInfo = dayData[`day${dayNum}`][1];
+                                            const dayButton = document.createElement('li');
+                                            dayButton.textContent = `Day${dayNum} | ${date}`;
+                                            dayButton.addEventListener('click', () => showDayInfo(dayNum, date, dayInfo));
+                                            dayList.appendChild(dayButton);
+                                          });
+                                        	// 在原本的按鈕上綁定點擊事件
+					                                const downloadiTravelButton = document.getElementById('download-iTravel-button');
+					                                downloadiTravelButton.addEventListener('click', () => downloadItineraryCSV(data));
+                                          })
+                                          .catch(error => {
+                                          // 處理錯誤
+                                            console.error('發生錯誤:', error);
+                                          });
+                                          
+                                          }
+                                          document.addEventListener("DOMContentLoaded", function () {
+                                            var loadingMessage = document.getElementById("loading-message");
+                                            var dayList = document.getElementById("day-list");
+                                        
+                                            // 創建一個 MutationObserver 實例來監聽 dayList 元素的變化
+                                            var observer = new MutationObserver(function (mutationsList, observer) {
+                                                // 當 dayList 元素出現時，隱藏 loadingMessage
+                                                loadingMessage.style.display = "none";
+                                                
+                                                // 停止觀察 dayList 元素的變化
+                                                observer.disconnect();
+                                            });
+                                        
+                                            // 配置 MutationObserver 來監測子節點的添加
+                                            var config = { childList: true };
+                                        
+                                            // 開始觀察 dayList 元素的變化
+                                            observer.observe(dayList, config);
+                                        });
+                                    
+                                      function downloadItineraryCSV(data) {
+                                        const itineraryCSV = generateItineraryCSV(data);
+                                        const blob = new Blob([itineraryCSV], { type: 'text/csv;charset=utf-8' });
+                                        const downloadLink = document.createElement('a');
+                                        downloadLink.href = URL.createObjectURL(blob);
+                                        downloadLink.download = 'iTravel.csv'; // 設定下載的檔名
+                                        document.body.appendChild(downloadLink);
+                                        downloadLink.click();
+                                        document.body.removeChild(downloadLink);
+                                    }
+                                    
+                                    function generateItineraryCSV(data) {
+                                      let csv = 'Day,Date,Morning,Lunch,Afternoon,Evening,Hotel\n'; // CSV 首行，列名
+                                    
+                                      data.message.forEach((dayData, index) => {
+                                        const dayNum = index + 1;
+                                        const date = dayData[`day${dayNum}`][0];
+                                        const dayInfo = dayData[`day${dayNum}`][1];
+                                    
+                                        const morningActivity = dayInfo['morning_time'] ? dayInfo['morning_time']['name'] : '';
+                                        const lunch = dayInfo['lunch'] ? dayInfo['lunch']['name'] : '';
+                                            const afternoonActivity1 = dayInfo['afternoon_time1'] ? dayInfo['afternoon_time1']['name'] : '';
+                                            const afternoonActivity2 = dayInfo['afternoon_time2'] ? dayInfo['afternoon_time2']['name'] : '';
+                                            const eveningActivity = dayInfo['dinner'] ? dayInfo['dinner']['name'] : '';
+                                        const hotel = dayInfo['hotel'] ? dayInfo['hotel']['name'] : '';
+                            
+                                            // 根據上午、下午和晚上的行程資訊格式化 CSV 行
+                                            csv += `${dayNum},${date},"${morningActivity}","${lunch}","${afternoonActivity1} ${afternoonActivity2}","${eveningActivity}","${hotel}"\n`;
+                                        });
+                                    
+                                      return csv;
+                                    }
+
+                                // 在點擊事件處理函數中的適當位置
+                                document.getElementById('day-list').addEventListener('click', () => {
+                                    const dailySchedule = document.getElementById('daily-schedule');
+                                    const responseContainer = document.getElementById('response-container');
+                                    dailySchedule.style.display = 'block';
+                                    responseContainer.style.display = 'block';
+                                  });
+
+                                // 在 form3.html 的載入時執行 API 請求
+                                window.onload = function() {
+                                  getDataFromAPI();
+                                  initMap();
+                                };
+
+                                function showDayInfo(dayNum, date, dayInfo) {
+                                  const responseContainer = document.getElementById('response-container');
+                                  responseContainer.innerHTML = '';
+                                  const locations = dayInfo;
+
+                                  // 設定地圖中心為上午活動地點
+                                  const centerLatLng = new google.maps.LatLng(locations.morning_time.lat, locations.morning_time.lng);
+
+                                  // 初始化地圖
+                                  const map = new google.maps.Map(document.getElementById('map'), {
+                                      center: centerLatLng,
+                                      zoom: 10
+                                  });
+                                  // 創建 InfoWindow
+                                  const infoWindow = new google.maps.InfoWindow();
+                                  const markers = []; // 儲存標記的陣列
+
+                                  // 在地圖上標示每個地點
+                                  for (const key in locations) {
+                                      const location = locations[key];
+                                      if (location.lat && location.lng) {
+                                          const markerLatLng = new google.maps.LatLng(location.lat, location.lng);
+                                          const marker = new google.maps.Marker({
+                                              position: markerLatLng,
+                                              map: map,
+                                              title: location.name
+                                          });
+
+                                        marker.addListener('mouseover', () => {
+                                            const content = `<h5>${location.name}</h5>`;
+                                            infoWindow.setContent(content);
+                                            infoWindow.open(map, marker);
+                                        });
+
+                                        // 添加滑鼠移出事件處理函數來關閉資訊視窗
+                                        marker.addListener('mouseout', () => {
+                                            infoWindow.close();
+                                        });
+                                        markers.push(marker); // 將標記加入陣列
+                                  }
+                                  }
+                                  // 顯示 DayX | 日期 (xxxx-xx-xx)
+                                  //const heading = document.createElement('h2');
+                                  //heading.textContent = `Day${dayNum} | ${date}`;
+                                  //responseContainer.appendChild(heading);
+
+                                  // 顯示上午行程
+                                  const morningHeading = document.createElement('h3');
+                                  morningHeading.innerHTML = '<i class="fas fa-flag"></i> 上午行程';
+                                  morningHeading.id = 'morning'; // 添加 id
+                                  responseContainer.appendChild(morningHeading);
+                                  showActivityInfo(dayInfo['morning_time'], responseContainer);
+                                  // 顯示餐廳安排（如果有）
+                                  if (dayInfo['lunch']) {
+                                        showRestaurantInfo(dayInfo['lunch'], responseContainer);
+                                  }
+
+                                  // 顯示下午行程
+                                  const afternoonHeading = document.createElement('h3');
+                                  afternoonHeading.innerHTML = '<i class="fas fa-flag"></i> 下午行程 ';
+                                  afternoonHeading.id = 'afternoon';
+                                  responseContainer.appendChild(afternoonHeading);
+                                  showActivityInfo(dayInfo['afternoon_time1'], responseContainer);
+                                  showActivityInfo(dayInfo['afternoon_time2'], responseContainer);
+
+                                  // 顯示晚上行程（如果有）
+                                  if (dayInfo['dinner']) {
+                                        const dinnerHeading = document.createElement('h3');
+                                        dinnerHeading.innerHTML = '<i class="fas fa-flag"></i> 晚上行程';
+                                        dinnerHeading.id = 'evening';
+                                        responseContainer.appendChild(dinnerHeading);
+                                        showRestaurantInfo(dayInfo['dinner'], responseContainer);
+
+                                        // 顯示晚上行程按鈕
+                                        const eveningBtn = document.getElementById('evening-btn');
+                                        eveningBtn.style.display = 'inline-block';
+                                        eveningBtn.addEventListener('click', () => scrollToSection('evening'));
+                                  }
+
+                                  // 顯示住宿安排
+                                  const hotelHeading = document.createElement('h3');
+                                  responseContainer.appendChild(hotelHeading);
+                                  showHotelInfo(dayInfo['hotel'], responseContainer);
+
+                                  // 顯示上午、下午和晚上行程按鈕
+                                  const morningBtn = document.getElementById('morning-btn');
+                                  const afternoonBtn = document.getElementById('afternoon-btn');
+                                  morningBtn.style.display = 'inline-block';
+                                  afternoonBtn.style.display = 'inline-block';
+
+                                  // 點擊按鈕跳轉到行程區域
+                                  morningBtn.addEventListener('click', () => scrollToSection('morning'));
+                                  afternoonBtn.addEventListener('click', () => scrollToSection('afternoon'));
+
+                                  // 顯示當天所有行程
+                                  const dailyScheduleTitle = document.getElementById('daily-schedule-title');
+                                  dailyScheduleTitle.textContent = `Day${dayNum} | ${date}`; // 更新標題
+
+                                  const dailyScheduleContent = document.getElementById('daily-schedule-content');
+                                  const morningActivity = dayInfo['morning_time']['name'];
+                                  const lunchActivity = dayInfo['lunch']['name'];
+                                  const afternoonActivity1 = dayInfo['afternoon_time1']['name'];
+                                  const afternoonActivity2 = dayInfo['afternoon_time2']['name'];
+                                  const eveningActivity = dayInfo['dinner'] ? ` → ${dayInfo['dinner']['name']}` : '';
+                                  const hotelActivity = dayInfo['hotel'] ? ` → ${dayInfo['hotel']['name']}` : '';
+  
+                                  dailyScheduleContent.textContent = `${morningActivity} → ${lunchActivity} → ${afternoonActivity1} → ${afternoonActivity2}  ${eveningActivity} ${hotelActivity}`;
+                                }
+                                
+                                // 滾動到特定行程區域
+                                function scrollToSection(sectionId) {
+                                  const section = document.getElementById(sectionId);
+                                  if (section) {
+                                      const stickyContainer = document.querySelector('.sticky-buttons-container');
+                                      const offset = stickyContainer.getBoundingClientRect().height;
+                                  
+                                      // 計算滾動目標位置
+                                      const targetScrollTop = section.getBoundingClientRect().top + window.scrollY - offset;
+                                  
+                                      // 執行平滑滾動
+                                      window.scrollTo({
+                                          top: targetScrollTop,
+                                          behavior: 'smooth'
+                                      });
+                                  }
+                                }
+
+                                function showActivityInfo(activity, container) {
+                                  if (!activity) {
+                                        return;
+                                  }
+
+                                  const activityName = activity['name'];
+                                  const activityCity = activity['city'];
+                                  const activityIntroduce = activity['introduce'];
+
+                                  const activityInfo = document.createElement('div');
+                                  activityInfo.innerHTML = `
+                                        <h4><b>景點安排 </b></h4>
+                                        <p>${activityName}</p>
+                                        <p>介紹 : ${activityIntroduce}</p>
+                                  `;
+
+                                  container.appendChild(activityInfo);
+                                }
+
+                                function showRestaurantInfo(restaurant, container) {
+                                  if (!restaurant) {
+                                        return;
+                                  }
+
+                                  const restaurantName = restaurant['name'];
+                                  const restaurantCity = restaurant['city'];
+                                  const restaurantAddress = restaurant['address'];
+                                  const restaurantTime = restaurant['time'].join('<br>');
+                                  const restaurantStar = restaurant['star'];
+
+                                  const restaurantInfo = document.createElement('div');
+                                  restaurantInfo.innerHTML = `
+			       		                        <h4><b>餐廳安排</b></h4>
+					                              <p>${restaurantName}</p>
+                                        <p>地址 : ${restaurantAddress}</p>
+                                        <p>營業時間 : ${restaurantTime}</p>
+                                        <p>評分 : ${restaurantStar}</p>
+                                  `;
+
+                                  container.appendChild(restaurantInfo);
+                                }
+
+                                function showHotelInfo(hotel, container) {
+                                  if (!hotel) {
+                                        return;
+                                  }
+
+                                  const hotelName = hotel['name'];
+                                  const hotelCity = hotel['city'];
+                                  const hotelAddress = hotel['address'];
+                                  const hotelPhone = hotel['phone'];
+
+                                  const hotelInfo = document.createElement('div');
+                                  hotelInfo.innerHTML = `
+			       		                        <h4><b>住宿安排</b></h4>
+					                              <p>${hotelName}</p>
+                                        <p>地址 : ${hotelAddress}</p>
+                                        <p>電話 : ${hotelPhone}</p>
+                                  `;
+
+                                  container.appendChild(hotelInfo);
+                                }
+                          </script>
+
+
+                </div>
+        </div>
+
+
+        <footer id="gtco-footer" role="contentinfo">
+            <div class="gtco-container">
+              <div class="row row-p   b-md">
+                <div class="col-md-4">
+                  <div class="gtco-widget">
+                    <h3>About Us</h3>
+                    <p>We are a dedicated team of passionate creators committed to providing you with the best travel experience through our booking website with a harmonious blend of expertise.  Welcome aboard, and let us take you on unforgettable journeys!</p>
+                  </div>
+                </div>
+                <div class="col-md-2 col-md-push-1">
+                  <div class="gtco-widget">
+                    <h3>Destination</h3>
+                    <ul class="gtco-footer-links">
+                      <li><a href="destination.html#firstrow">Taipei</a></li>
+                      <li><a href="destination.html#firstrow">Kaohsiung</a></li>
+                      <li><a href="destination.html#firstrow">Taoyuan</a></li>
+                      <li><a href="destination.html#secondrow">keelung</a></li>
+                      <li><a href="destination.html#secondrow">Hualien</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2 col-md-push-1">
+                  <div class="gtco-widget">
+                    <h3>Support</h3>
+                    <ul class="gtco-footer-links">
+                      <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+		      <li><a href="carbon.html">Carbon</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-3 col-md-push-1">
+                  <div class="gtco-widget">
+                    <h3>Get In Touch</h3>
+                    <ul class="gtco-quick-contact">
+			<li class="phone"><a href="tel://02 2700 5858">+02 2700 5858</a></li>
+                	<li class="email"><a href="mailto:info@yoursite.com">https://www.sce.pccu.edu.tw/</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row copyright">
+                <div class="col-md-12">
+                  <p class="pull-left">
+                    <small class="block">&copy; 2023 Designed by Team iTravel</small> 
+                  </p>
+                  <p class="pull-right">
+		   <ul class="gtco-social-icons pull-right">
+                     <li><i class="icon-twitter"></i></li>
+                     <li><i class="icon-facebook"></i></li>
+                     <li><i class="icon-linkedin"></i></li>
+                     <li><i class="icon-dribbble"></i></li>
+                   </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+
+        <!-- </div> -->
+
+        </div>
+
+        <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+        </div>
+
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <!-- jQuery Easing -->
+        <script src="js/jquery.easing.1.3.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Waypoints -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <!-- Carousel -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- countTo -->
+        <script src="js/jquery.countTo.js"></script>
+
+        <!-- Stellar Parallax -->
+        <script src="js/jquery.stellar.min.js"></script>
+
+        <!-- Magnific Popup -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/magnific-popup-options.js"></script>
+
+        <!-- Datepicker -->
+        <script src="js/bootstrap-datepicker.min.js"></script>
+
+
+        <!-- Main -->
+        <script src="js/main.js"></script>
+
+        </body>
+</html>

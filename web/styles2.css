@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+h4 {
+  margin: 5px 0;
+}
+
+#response-container {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#day-list {
+  list-style: none;
+  padding: 0;
+}
+
+#day-list li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+}
+
+#day-list li:hover {
+  background-color: #f2f2f2;
+}
+
+#day-list li:active {
+  background-color: #e5e5e5;
+}
+
+.time-btn {
+  background-color: transparent; /* 設置按鈕透明背景 */
+  color: #555; /* 設置按鈕文字顏色為灰色 */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 10px;
+  font-weight: bold; /* 將文字設置為粗體 */
+}
+
+.time-btn:hover {
+  background-color: #555; /* 設置懸浮時的背景顏色 */
+  color: white; /* 設置懸浮時的文字顏色 */
+}
