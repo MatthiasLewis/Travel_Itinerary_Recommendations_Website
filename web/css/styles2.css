@@ -1,0 +1,167 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+h4 {
+  margin: 5px 0;
+}
+
+#response-container {
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  /* border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  /* text-align: center; */
+}
+
+#response-container h3 {
+  font-size: 24px; /* 調整字體大小 */
+  /* text-align: center; 文字置中對齊 */
+  margin-top: 20px; /* 調整上方間距 */
+}
+
+
+#day-list {
+  list-style: none;
+  padding: 0;
+}
+
+#day-list li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+}
+
+#day-list li:hover {
+  background-color: #f2f2f2;
+}
+
+#day-list li:active {
+  background-color: #e5e5e5;
+}
+
+.time-btn {
+  background-color: transparent; /* 設置按鈕透明背景 */
+  color: #555; /* 設置按鈕文字顏色為灰色 */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 10px;
+  font-weight: bold; /* 將文字設置為粗體 */
+}
+
+.time-btn:hover {
+  background-color: #555; /* 設置懸浮時的背景顏色 */
+  color: white; /* 設置懸浮時的文字顏色 */
+}
+
+.time-btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.time-btn-block {
+  flex: 1;
+  text-align: center;
+}
+
+.time-btn-block:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+/* .google-map-container { */
+  /*float: right; /* 設置為右浮動 */
+  /*width: 300px; /* 設置合適的寬度，這是一個示例值，您可以根據需要調整 */
+  /*height: 300px; /* 設置適當的高度 */
+/*} */
+
+
+/* 當天行程 */
+#daily-schedule {
+  margin-top: 20px;
+  padding: 10px; /* 調整 padding */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#daily-schedule h3 {
+  font-size: 30px; /* 調整字體大小 */
+  margin-bottom: 8px; /* 調整下方間距 */
+}
+
+#daily-schedule-content {
+  font-size: 17px; /* 調整字體大小 */
+}
+
+#daily-schedule-content {
+  font-weight: bold; /* 設定為加粗體 */
+  font-size: 17px; /* 調整字體大小 */
+}
+
+#response-container strong {
+  font-weight: bold;
+  font-size: 25px;
+  display: block; /* 將 strong 元素設為塊級元素，以便置中對齊 */
+  margin: 0 auto; /* 使用自動外邊距實現水平居中 */
+  /* text-align: center; 將文字內容置中 */
+}
+
+.sticky-buttons-container {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+}
+
+.gtco-section.border-bottom {
+  padding: 10px; /* 調整内邊距來缩小區塊的高度 */
+  margin-bottom: 20px; /* 調整下邊距来調整區塊與下方元素的距離 */
+  border-bottom: none; /* 移除底部邊框線 */
+}
+
+.loading-message {
+  font-size: 20px; /* 調整字體大小 */
+  font-weight: bold; /* 加粗字體 */
+}
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 30px; /* 調整這個數值以改變文字的垂直位置 */
+}
+
+.loading-message img {
+  max-width: 25px; /* 調整這個數值以改變圖片的寬度 */
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 20px; /* 調整這個數值以改變圖片往上的距離 */
+}
+
