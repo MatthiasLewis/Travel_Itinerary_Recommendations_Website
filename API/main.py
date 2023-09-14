@@ -97,7 +97,7 @@ class Travel(MethodResource):
     def get():
         import redis,json
         start_time = time.time()
-        from sqlalchemy import create_engine,text,inspect
+        from sqlalchemy import create_engine,inspect
 
         city = request.args.get("county")
         engine = create_engine("sqlite:///travel.db?charset=utf8")
